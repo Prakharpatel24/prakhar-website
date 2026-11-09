@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="920" viewBox="0 0 720 920" role="img" aria-label="Abstract portrait placeholder">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#d9d0c0"/><stop offset="1" stop-color="#bcb0a0"/></linearGradient><linearGradient id="shirt" x2="0" y2="1"><stop stop-color="#4b5049"/><stop offset="1" stop-color="#2b312d"/></linearGradient></defs>
+  <rect width="720" height="920" fill="url(#bg)"/><circle cx="596" cy="168" r="250" fill="#e5ddcf" opacity=".32"/><path d="M0 720Q360 540 720 720V920H0Z" fill="#a99b88" opacity=".35"/>
+  <path d="M105 920V745Q140 577 303 564H417Q581 579 615 745V920Z" fill="url(#shirt)"/>
+  <path d="M305 510h111v118q-55 58-111 0Z" fill="#aa9581"/>
+  <ellipse cx="360" cy="357" rx="126" ry="169" fill="#b8a18b"/>
+  <path d="M233 362q-27-189 123-199 166-2 137 204-12-90-35-114-32-36-93-27-77 14-132 136Z" fill="#49453e"/>
+  <path d="M277 394q22-16 53-3M395 391q30-12 51 5" stroke="#594c42" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M352 390l-8 68 31 1" stroke="#846d5e" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M329 489q35 21 70-2" stroke="#795f52" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M305 619l55 80 56-80" fill="#e5d6c7"/><path d="M305 619l-27 301m138-301 30 301" stroke="#6d746c" stroke-width="5"/>
+</svg>
