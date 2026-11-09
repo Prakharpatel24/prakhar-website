@@ -3637,3 +3637,24 @@ a.contact-primary-action:hover {
     transition: none;
   }
 }
+
+
+/* =========================================
+   PHASE 7.6 — VERCEL ACCESSIBILITY FIXES
+   ========================================= */
+
+/* Featured encounter card: small labels */
+.encounter-featured .encounter-card-top .editorial-label,
+.encounter-featured .encounter-feature-text .editorial-label {
+  color: #44382f;
+}
+
+/* Featured encounter: illustration caption */
+.encounter-featured .encounter-visual-corner {
+  color: #302720;
+}
+
+/* Secondary encounter: small label */
+.encounter-secondary .encounter-card-top .editorial-label {
+  color: #44382f;
+}

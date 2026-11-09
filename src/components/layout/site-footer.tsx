@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="container-editorial">
         <div className="site-footer-refined-inner">
           <div className="site-footer-brand">
-            <Link href="/" aria-label="Prakhar Patel homepage">
+            <Link href="/" aria-label="PP® — Prakhar Patel homepage">
               PP<span>®</span>
             </Link>
 
