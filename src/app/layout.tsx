@@ -7,6 +7,7 @@ import {
   siteReadyForIndexing,
   siteUrl,
 } from "@/lib/site-config";
+import { Analytics } from '@vercel/analytics/next';
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
 const instrument = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-instrument', display: 'swap' });
@@ -56,7 +57,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${instrument.variable} ${mono.variable}`}>{children}</body>
+      <body className={`${manrope.variable} ${instrument.variable} ${mono.variable}`}
+      >
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
