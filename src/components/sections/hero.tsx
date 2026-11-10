@@ -128,7 +128,7 @@ export function Hero() {
         {/* Top image label */}
         <div className="absolute inset-x-5 top-5 flex items-start justify-between gap-2 md:inset-x-7 md:top-7">
           <span className="editorial-label rounded-full bg-paper/95 px-3 py-2 text-[9px] leading-4 text-ink">
-            The human behind the code
+            The person behind the code
           </span>
 
           <Asterisk
