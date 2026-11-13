@@ -22,19 +22,19 @@ export function SystemsToPeopleTransition() {
         offset: ['start start', 'end end'],
     });
 
-    // The entire transformation is controlled by scroll.
-    const animatedProgress = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [0, 1]
-    );
-
-    // Static final composition for reduced-motion users.
+    // Overall cinematic progress
     const stillProgress = useMotionValue(1);
 
     const progress = reducedMotion
         ? stillProgress
-        : animatedProgress;
+        : scrollYProgress;
+
+    // Network-specific timing
+    const networkProgress = useTransform(
+        progress,
+        [0, 0.2, 0.75, 1],
+        [0, 0, 1, 1]
+    );
 
     const backgroundColor = useTransform(
         progress,
@@ -56,20 +56,32 @@ export function SystemsToPeopleTransition() {
 
     const firstLineOpacity = useTransform(
         progress,
-        [0, 0.35, 0.6],
-        [1, 1, 0]
+        [0, 0.25, 0.45, 1],
+        [1, 1, 0, 0]
+    );
+
+    const firstLineY = useTransform(
+        progress,
+        [0, 0.25, 0.45, 1],
+        [0, 0, -36, -36]
     );
 
     const secondLineOpacity = useTransform(
         progress,
-        [0.4, 0.7, 1],
-        [0, 1, 1]
+        [0, 0.45, 0.7, 1],
+        [0, 0, 1, 1]
+    );
+
+    const secondLineY = useTransform(
+        progress,
+        [0, 0.45, 0.7, 1],
+        [36, 36, 0, 0]
     );
 
     const networkScale = useTransform(
         progress,
-        [0, 1],
-        [0.85, 1.15]
+        [0, 0.2, 0.75, 1],
+        [0.85, 0.85, 1.15, 1.15]
     );
 
     return (
@@ -95,9 +107,8 @@ export function SystemsToPeopleTransition() {
                             className="systems-transition-heading"
                             style={{
                                 color: foregroundColor,
-                                opacity: reducedMotion
-                                    ? 0
-                                    : firstLineOpacity,
+                                opacity: reducedMotion ? 0 : firstLineOpacity,
+                                y: reducedMotion ? 0 : firstLineY,
                             }}
                             aria-hidden="true"
                         >
@@ -110,9 +121,8 @@ export function SystemsToPeopleTransition() {
                             className="systems-transition-heading systems-transition-heading-second"
                             style={{
                                 color: foregroundColor,
-                                opacity: reducedMotion
-                                    ? 1
-                                    : secondLineOpacity,
+                                opacity: reducedMotion ? 1 : secondLineOpacity,
+                                y: reducedMotion ? 0 : secondLineY,
                             }}
                         >
                             The interesting part
@@ -128,7 +138,7 @@ export function SystemsToPeopleTransition() {
                         }}
                     >
                         <SystemsNetwork
-                            progress={progress}
+                            progress={networkProgress}
                             reducedMotion={false}
                         />
                     </motion.div>
