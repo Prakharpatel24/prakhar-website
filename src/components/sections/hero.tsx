@@ -8,11 +8,10 @@ import {
   ArrowUpRight,
   Asterisk,
 } from 'lucide-react';
-import { 
-  motion, 
-  useReducedMotion, 
-  useScroll,
-  useTransform,
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
 } from 'motion/react';
 import { SystemsNetwork } from '../motion/systems-network';
 import { useRef } from 'react';
@@ -27,14 +26,8 @@ const rise = {
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
-
-  const { scrollY } = useScroll();
-
-  const networkProgress = useTransform(
-    scrollY,
-    [0, 350],
-    [0, 1]
-  );
+  
+  const networkProgress = useMotionValue(0);
 
   const appear = (delay: number) => ({
     variants: rise,

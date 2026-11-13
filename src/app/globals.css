@@ -3711,3 +3711,147 @@ a.contact-primary-action:hover {
     opacity: 0.25;
   }
 }
+
+
+/* =========================================
+   PHASE 8 — CINEMATIC TRANSITION
+   ========================================= */
+
+.systems-transition {
+  position: relative;
+  height: 165svh;
+}
+
+.systems-transition-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.systems-transition-inner {
+  position: relative;
+  width: min(calc(100% - 96px), 1280px);
+  height: 100%;
+  margin-inline: auto;
+}
+
+.systems-transition-eyebrow {
+  position: absolute;
+  z-index: 3;
+  top: 9%;
+  left: 0;
+}
+
+.systems-transition-copy {
+  position: absolute;
+  z-index: 2;
+  top: 19%;
+  left: 0;
+  width: 100%;
+}
+
+.systems-transition-heading {
+  font-size: clamp(3rem, 6.5vw, 7.2rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.075em;
+}
+
+.systems-transition-heading-second {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.systems-transition-heading-second .display-serif {
+  color: #d76f4f;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.systems-transition-art {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.systems-transition .systems-network {
+  top: 53%;
+  left: 50%;
+  right: auto;
+  width: min(78vw, 700px);
+  max-width: none;
+  transform: translate(-50%, -10%);
+  opacity: 0.85;
+}
+
+.systems-transition .systems-network-lines path {
+  stroke-width: 1.45;
+  stroke-opacity: 0.8;
+}
+
+.systems-transition-footer {
+  position: absolute;
+  z-index: 3;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Mobile adaptation */
+
+@media (max-width: 767px) {
+  .systems-transition {
+    height: 145svh;
+  }
+
+  .systems-transition-inner {
+    width: calc(100% - 40px);
+  }
+
+  .systems-transition-eyebrow {
+    top: 12%;
+  }
+
+  .systems-transition-copy {
+    top: 24%;
+  }
+
+  .systems-transition-heading {
+    font-size: clamp(2.7rem, 10vw, 4.3rem);
+  }
+
+  .systems-transition .systems-network {
+    top: 59%;
+    width: 105%;
+    opacity: 0.72;
+  }
+
+  .systems-transition-footer {
+    bottom: 9%;
+  }
+
+  .systems-transition-footer span:last-child {
+    display: none;
+  }
+}
+
+/* Reduced-motion fallback */
+
+@media (prefers-reduced-motion: reduce) {
+  .systems-transition {
+    height: 75svh;
+    background: #1d1d1b;
+  }
+
+  .systems-transition-stage {
+    position: relative;
+    height: 75svh;
+  }
+}

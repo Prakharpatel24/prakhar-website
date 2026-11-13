@@ -11,6 +11,7 @@ import { ContactSection } from '@/components/sections/contact-section';
 import type { Metadata } from "next";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 import { SelectedEncounters } from '@/components/sections/selected-encounters';
+import { SystemsToPeopleTransition } from '@/components/motion/systems-to-people-transition';
 
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <SystemsToPeopleTransition />
         <Intro />
         <SelectedWork />
         <NamePlayground />
