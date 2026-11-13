@@ -38,8 +38,8 @@ export function SystemsToPeopleTransition() {
 
     const backgroundColor = useTransform(
         progress,
-        [0, 1],
-        ['#f4f0e8', '#1d1d1b']
+        [0, 0.15, 0.8, 1],
+        ['#f4f0e8', '#f4f0e8', '#1d1d1b', '#1d1d1b']
     );
 
     const foregroundColor = useTransform(

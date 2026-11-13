@@ -3720,6 +3720,7 @@ a.contact-primary-action:hover {
 .systems-transition {
   position: relative;
   height: 165svh;
+  background: #1d1d1b;
 }
 
 .systems-transition-stage {
