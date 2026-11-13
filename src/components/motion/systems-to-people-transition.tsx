@@ -134,6 +134,11 @@ export function SystemsToPeopleTransition() {
                         00 / FROM SYSTEMS TO PEOPLE
                     </motion.p>
 
+                    <h2 className="sr-only">
+                        From systems to people: everything begins with a system,
+                        but the interesting part is people.
+                    </h2>
+
                     <div className="systems-transition-copy">
                         <motion.h2
                             className="systems-transition-heading"
@@ -151,6 +156,7 @@ export function SystemsToPeopleTransition() {
 
                         <motion.h2
                             className="systems-transition-heading systems-transition-heading-second"
+                            aria-hidden="true"
                             style={{
                                 color: foregroundColor,
                                 opacity: reducedMotion ? 1 : secondLineOpacity,
