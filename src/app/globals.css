@@ -3830,7 +3830,11 @@ a.contact-primary-action:hover {
 
   .systems-transition .systems-network {
     top: 59%;
-    width: 105%;
+    left: 50%;
+    right: auto;
+    width: 84%;
+    max-width: 350px;
+    transform: translate(-50%, -10%);
     opacity: 0.72;
   }
 
@@ -3854,5 +3858,15 @@ a.contact-primary-action:hover {
   .systems-transition-stage {
     position: relative;
     height: 75svh;
+  }
+}
+
+@media (max-width: 767px) {
+  .systems-transition-art {
+    transform-origin: center center;
+  }
+
+  .systems-transition .systems-network svg {
+    overflow: visible;
   }
 }

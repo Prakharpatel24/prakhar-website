@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useSyncExternalStore } from 'react';
 import {
     motion,
     useMotionValue,
@@ -12,9 +12,41 @@ import {
 
 import { SystemsNetwork } from './systems-network';
 
+
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+function subscribeToReducedMotion(
+    callback: () => void
+) {
+    const mediaQuery = window.matchMedia(reducedMotionQuery);
+
+    mediaQuery.addEventListener('change', callback);
+
+    return () => {
+        mediaQuery.removeEventListener('change', callback);
+    };
+}
+
+function getReducedMotionSnapshot() {
+    return window.matchMedia(reducedMotionQuery).matches;
+}
+
+function getServerReducedMotionSnapshot() {
+    return false;
+}
+
+function useHydrationSafeReducedMotion() {
+    return useSyncExternalStore(
+        subscribeToReducedMotion,
+        getReducedMotionSnapshot,
+        getServerReducedMotionSnapshot
+    );
+}
+
+
 export function SystemsToPeopleTransition() {
     const sectionRef = useRef<HTMLElement>(null);
-    const reducedMotion = useReducedMotion();
+    const reducedMotion = useHydrationSafeReducedMotion();
 
     // Tracks the section while its visual remains sticky.
     const { scrollYProgress } = useScroll({
@@ -22,7 +54,7 @@ export function SystemsToPeopleTransition() {
         offset: ['start start', 'end end'],
     });
 
-    // Overall cinematic progress
+    // Keep the same initial render on server and client.
     const stillProgress = useMotionValue(1);
 
     const progress = reducedMotion

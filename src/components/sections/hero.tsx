@@ -25,7 +25,7 @@ export function Hero() {
 
   const appear = (delay: number) => ({
     variants: rise,
-    initial: reducedMotion ? false as const : 'hidden' as const,
+    initial: false as const,
     animate: 'visible' as const,
     transition: {
       delay: reducedMotion ? 0 : delay,
