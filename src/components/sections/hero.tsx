@@ -10,11 +10,8 @@ import {
 } from 'lucide-react';
 import {
   motion,
-  useMotionValue,
   useReducedMotion,
 } from 'motion/react';
-import { SystemsNetwork } from '../motion/systems-network';
-import { useRef } from 'react';
 
 const easing = [0.22, 1, 0.36, 1] as const;
 
@@ -24,10 +21,7 @@ const rise = {
 };
 
 export function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
-  
-  const networkProgress = useMotionValue(0);
 
   const appear = (delay: number) => ({
     variants: rise,
@@ -42,88 +36,78 @@ export function Hero() {
 
   return (
     <section
-      ref={heroRef}
       className="container-editorial hero-grid relative grid items-center gap-10 pb-16 pt-8 md:gap-12 lg:gap-14 lg:pb-20 lg:pt-12"
       aria-labelledby="hero-title"
     >
 
       {/* LEFT: Headline and introduction */}
       <div className="relative z-10 min-w-0">
-        {/* Decorative network behind the headline */}
-        <SystemsNetwork
-          progress={networkProgress}
-          reducedMotion={Boolean(reducedMotion)}
-        />
+        <motion.p
+          {...appear(0)}
+          className="editorial-label mb-7 flex items-center gap-3 text-[#6b665e] md:mb-9"
+        >
+          <span
+            className="h-2 w-2 shrink-0 rounded-full bg-terracotta"
+            aria-hidden="true"
+          />
+          Software engineer. People &amp; possibilities.
+        </motion.p>
 
-        {/* Existing hero content */}
-        <div className="relative z-10">
-          <motion.p
-            {...appear(0)}
-            className="editorial-label mb-7 flex items-center gap-3 text-[#6b665e] md:mb-9"
+        <h1
+          id="hero-title"
+          className="hero-heading font-semibold leading-[0.99] tracking-[-0.085em]"
+        >
+          <motion.span {...appear(0.08)} className="block">
+            I build
+          </motion.span>
+
+          <motion.span {...appear(0.16)} className="block">
+            systems.
+          </motion.span>
+
+          <motion.span
+            {...appear(0.25)}
+            className="display-serif mt-2 block italic font-normal tracking-[-0.065em] text-terracotta md:mt-3"
           >
-            <span
-              className="h-2 w-2 shrink-0 rounded-full bg-terracotta"
-              aria-hidden="true"
-            />
-            Software engineer. People &amp; possibilities.
-          </motion.p>
+            I connect
+          </motion.span>
 
-          <h1
-            id="hero-title"
-            className="hero-heading font-semibold leading-[0.99] tracking-[-0.085em]"
+          <motion.span
+            {...appear(0.34)}
+            className="display-serif block italic font-normal tracking-[-0.065em] text-terracotta"
           >
-            <motion.span {...appear(0.08)} className="block">
-              I build
-            </motion.span>
+            people.
+          </motion.span>
+        </h1>
 
-            <motion.span {...appear(0.16)} className="block">
-              systems.
-            </motion.span>
+        <motion.div {...appear(0.48)}>
+          <p className="mt-7 max-w-[470px] text-[15px] leading-[1.8] text-[#625e57] md:mt-8 md:text-[17px]">
+            I’m Prakhar — an engineer drawn to big ideas,
+            meaningful conversations, and the space where
+            technology meets business.
+          </p>
 
-            <motion.span
-              {...appear(0.25)}
-              className="display-serif mt-2 block italic font-normal tracking-[-0.065em] text-terracotta md:mt-3"
+          <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-5 md:mt-8">
+            <Link
+              href="#work"
+              className="button-ink group inline-flex min-h-13 items-center gap-4 rounded-full px-6 text-[12px] font-semibold"
             >
-              I connect
-            </motion.span>
+              Explore my work
+              <ArrowUpRight
+                size={16}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
 
-            <motion.span
-              {...appear(0.34)}
-              className="display-serif block italic font-normal tracking-[-0.065em] text-terracotta"
+            <Link
+              href="#about"
+              className="text-[12px] font-semibold underline decoration-ink/40 underline-offset-[5px] transition-colors hover:text-terracotta"
             >
-              people.
-            </motion.span>
-          </h1>
-
-          <motion.div {...appear(0.48)}>
-            <p className="mt-7 max-w-[470px] text-[15px] leading-[1.8] text-[#625e57] md:mt-8 md:text-[17px]">
-              I’m Prakhar — an engineer drawn to big ideas,
-              meaningful conversations, and the space where
-              technology meets business.
-            </p>
-
-            <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-5 md:mt-8">
-              <Link
-                href="#work"
-                className="button-ink group inline-flex min-h-13 items-center gap-4 rounded-full px-6 text-[12px] font-semibold"
-              >
-                Explore my work
-                <ArrowUpRight
-                  size={16}
-                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
-
-              <Link
-                href="#about"
-                className="text-[12px] font-semibold underline decoration-ink/40 underline-offset-[5px] transition-colors hover:text-terracotta"
-              >
-                More about me
-              </Link>
-            </div>
-          </motion.div>
-        </div>
+              More about me
+            </Link>
+          </div>
+        </motion.div>
       </div>
 
 
