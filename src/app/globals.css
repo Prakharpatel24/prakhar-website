@@ -3658,3 +3658,56 @@ a.contact-primary-action:hover {
 .encounter-secondary .encounter-card-top .editorial-label {
   color: #44382f;
 }
+
+
+/* =========================================
+   PHASE 8 — SYSTEMS TO PEOPLE
+   Stage 1: Static network foundation
+   ========================================= */
+
+.systems-network {
+  position: absolute;
+  top: 8%;
+  right: -5%;
+  width: min(72%, 410px);
+  aspect-ratio: 2 / 1;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.systems-network svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.systems-network-lines line {
+  stroke: #8f8b81;
+  stroke-width: 0.9;
+  stroke-opacity: 0.45;
+}
+
+.systems-network-halo {
+  fill: #70756b;
+  fill-opacity: 0.07;
+}
+
+.systems-network-node {
+  fill: #70756b;
+  fill-opacity: 0.65;
+}
+
+.systems-network-node-accent {
+  fill: #9e4d36;
+}
+
+@media (max-width: 767px) {
+  .systems-network {
+    top: 12%;
+    right: -2%;
+    width: 64%;
+    opacity: 0.25;
+  }
+}
