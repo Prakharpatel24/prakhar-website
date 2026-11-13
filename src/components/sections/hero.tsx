@@ -8,8 +8,14 @@ import {
   ArrowUpRight,
   Asterisk,
 } from 'lucide-react';
-import { motion, useReducedMotion } from 'motion/react';
+import { 
+  motion, 
+  useReducedMotion, 
+  useScroll,
+  useTransform,
+} from 'motion/react';
 import { SystemsNetwork } from '../motion/systems-network';
+import { useRef } from 'react';
 
 const easing = [0.22, 1, 0.36, 1] as const;
 
@@ -19,7 +25,16 @@ const rise = {
 };
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
+
+  const { scrollY } = useScroll();
+
+  const networkProgress = useTransform(
+    scrollY,
+    [0, 350],
+    [0, 1]
+  );
 
   const appear = (delay: number) => ({
     variants: rise,
@@ -34,6 +49,7 @@ export function Hero() {
 
   return (
     <section
+      ref={heroRef}
       className="container-editorial hero-grid relative grid items-center gap-10 pb-16 pt-8 md:gap-12 lg:gap-14 lg:pb-20 lg:pt-12"
       aria-labelledby="hero-title"
     >
@@ -41,7 +57,10 @@ export function Hero() {
       {/* LEFT: Headline and introduction */}
       <div className="relative z-10 min-w-0">
         {/* Decorative network behind the headline */}
-        <SystemsNetwork />
+        <SystemsNetwork
+          progress={networkProgress}
+          reducedMotion={Boolean(reducedMotion)}
+        />
 
         {/* Existing hero content */}
         <div className="relative z-10">
