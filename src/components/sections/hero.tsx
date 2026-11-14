@@ -118,7 +118,7 @@ export function Hero() {
           src="/images/prakhar-speaking.jpg"
           alt="Prakhar speaking into a microphone at a podium during an event"
           fill
-          priority
+          loading="eager"
           fetchPriority="high"
           sizes="(max-width: 1023px) 100vw, 44vw"
           className="hero-photo-image object-cover"
